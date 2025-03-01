@@ -31,8 +31,8 @@
     </style>
 </head>
 <body>
-    <h1>😢 Oops! 404</h1>
-    <p>Rak ghalett fil path. Had la page ma kaynach!</p>
-    <p><a href="{{ url('/') }}">⬅️ Rej3 l'accueil</a></p>
+    <h1>Oops! 404</h1>
+    <p>Erreur ! L'adresse que tu as entrée est incorrecte.</p>
+    <p><a href="{{ url('/') }}">⬅️ Retourner à la page d'accueil</a></p>
 </body>
 </html>
