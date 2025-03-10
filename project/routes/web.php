@@ -17,7 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 }
 );
-
+// Route::get('/', function () {
+//     return view('auth.register');
+// }
+// );
+Route::get('/register', function () {
+    return view('auth.register');
+}
+);
+Route::post('/register', 'RegisterController@register')->name('register');
+Route::get('/login', function () {
+    return view('auth.login');
+}
+);
+Route::post('/login', 'LoginController@login')->name('login');
 Route::fallback(function () {
     return view('errors.404');
 }
