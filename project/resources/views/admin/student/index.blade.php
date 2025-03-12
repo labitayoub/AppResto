@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mx-auto py-8">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-3xl font-bold">List of Questions</h1>
+            <h1 class="text-3xl font-bold">List of Students</h1>
             <a href="{{ route('questions.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
@@ -21,7 +21,7 @@
         @foreach ($questions as $question)
         <div class="bg-white shadow-md rounded-lg p-6 mb-4">
             <h2 class="text-xl font-bold mb-2">{{ $question->question }}</h2>
-            <h3 class="text-lg font-bold mb-2">Responses:</h3>
+            <h3 class="text-lg font-bold mb-2">Students:</h3>
                 <ul class="space-y-2">
                     @foreach ($question->responses as $response)
                         <li class="flex items-center">
@@ -48,7 +48,7 @@
 
         @if(count($questions) === 0)
             <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded">
-                No questions found. Create your first question!
+                No students found. Create your first student!
             </div>
         @endif
     </div>
