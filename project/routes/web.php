@@ -25,8 +25,8 @@ Route::get('/register', function () {
     return view('auth.register');
 }
 );
-Route::post('/register', 'RegisterController@register')->name('register');
-Route::get('/login', function () {
+
+Route::post('/register', [App\Http\Controllers\RegisterController::class, 'register'])->name('register');Route::get('/login', function () {
     return view('auth.login');
 }
 );
