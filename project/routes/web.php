@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,26 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-}
-);
-// Route::get('/', function () {
-//     return view('auth.register');
-// }
-// );
-Route::get('/register', function () {
-    return view('auth.register');
-}
-);
+    return view('home');
+});
 
-Route::post('/register', [App\Http\Controllers\RegisterController::class, 'register'])->name('register');Route::get('/login', function () {
-    return view('auth.login');
-}
-);
-Route::post('/login', 'LoginController@login')->name('login');
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
+Route::post('register', [RegisterController::class, 'register'])->name('register');
+
+Route::get('login', [LoginController::class, 'showloginForm'])->name('login.form');
+Route::post('login', [LoginController::class, 'login'])->name('login');
+
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::fallback(function () {
     return view('errors.404');
-}
-
-
-);
+});
