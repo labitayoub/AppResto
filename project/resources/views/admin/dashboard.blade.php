@@ -35,7 +35,7 @@
             <!-- Section de gestion des élèves -->
             <div class="mt-8">
                 <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-bold">Gestion des élèves</h2>
+                    <h2 class="text-xl font-bold">Gestion des élèves </h2>
                     {{-- <a href="{{ route('students.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"> --}}
                         Ajouter un élève
                     </a>
