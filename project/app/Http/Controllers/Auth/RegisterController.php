@@ -25,9 +25,9 @@ class RegisterController extends Controller
         // Create the user
         $user = $this->create($request->all());
         
-        
-        return redirect()->route('login')
-            ->with('success', 'Registration successful! Please login.');
+        // dd($user);
+
+        return redirect()->route('login')->with('success', 'Registration successful! Please login.');
     }
     
     protected function validator(array $data)

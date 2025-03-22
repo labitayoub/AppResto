@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -19,18 +20,28 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // dd($request->all());
-        $email = $request->email;
-        $password = $request->password;
-        $credentials = ['email' => $email, 'password' => $password];
-        // dd($credentials);
-       if( Auth::attempt($credentials)){
-           $request->session()->regenerate();
-              return redirect()->intended('/dashboard');
-       }else{
-              return back()->withErrors([
-                'email' => 'The provided credentials do not match our records.',
-              ]);
-       }
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
+        }
+        
+        return back()->withErrors([
+            'email' => 'Les identifiants fournis ne correspondent pas à nos enregistrements.',
+        ]);
     }
+
+    public function logout()
+    {
+        Session::flush();
+
+        Auth::logout();
+
+        return redirect('login')->with('success', 'Vous êtes bien déconnecté.');
+    }
+    
 }

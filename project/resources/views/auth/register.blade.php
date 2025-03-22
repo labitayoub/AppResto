@@ -20,6 +20,8 @@
                         @enderror
                     </div>
 
+
+                    
                     <div class="mb-4">
                         <label for="last_name" class="block text-blue-700">Nom de famille</label>
                         <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}"

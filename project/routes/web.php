@@ -15,17 +15,36 @@ use App\Http\Controllers\auth\LoginController;
 |
 */
 
+// Home page route
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
+// Other static pages
+Route::get('/courses', function () {
+    return view('courses');
+})->name('courses');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('/dashboard', function () {
+    return view('admin/dashboard');
+})->name('dashboard');
+
+// Authentication routes
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
 Route::post('register', [RegisterController::class, 'register'])->name('register');
 
 Route::get('login', [LoginController::class, 'showloginForm'])->name('login.form');
 Route::post('login', [LoginController::class, 'login'])->name('login');
 
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::fallback(function () {
     return view('errors.404');
